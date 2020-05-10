@@ -3,10 +3,10 @@ import CounterRow from "./CounterRow";
 
 export default class CounterTable extends React.Component {
    render() {
-       let {counters, increment, decrement} = this.props;
+       let {counters, functions} = this.props;
        return (
            <table id="counter-table">
-               {counters.map(counter => <CounterRow counter={counter} increment={increment} decrement={decrement}/>)}
+               {counters.map(counter => <CounterRow counter={counter} functions={functions}/>)}
            </table>
        )
    }

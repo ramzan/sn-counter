@@ -3,11 +3,15 @@ import React from "react";
 export default class CounterRow extends React.Component {
 
     dec() {
-        this.props.decrement(this.props.counter);
+        this.props.functions.decrement(this.props.counter);
     }
 
     inc() {
-        this.props.increment(this.props.counter);
+        this.props.functions.increment(this.props.counter);
+    }
+
+    edit() {
+        this.props.functions.edit(this.props.counter);
     }
 
    render() {
@@ -18,6 +22,7 @@ export default class CounterRow extends React.Component {
                <td><button onClick={this.dec.bind(this)}> - </button> </td>
                <td> {counter.value} </td>
                <td> <button onClick={this.inc.bind(this)}> + </button> </td>
+               <td> <button onClick={this.edit.bind(this)}> Edit </button> </td>
            </tr>
        )
    }

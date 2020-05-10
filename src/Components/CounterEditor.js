@@ -38,14 +38,22 @@ export default class CounterEditor extends React.Component {
         })
     }
 
+    editCounter(counter) {
+       console.log("Editing", counter);
+    }
+
    render() {
+        const functions = {
+            increment: this.increment.bind(this),
+            decrement: this.decrement.bind(this),
+            edit: this.editCounter.bind(this)
+       };
         return (
             <div id="counter-editor">
                 <CounterCreator addCounter={this.addCounter.bind(this)}/>
                 <CounterTable
                     counters={this.state.counters}
-                    increment={this.increment.bind(this)}
-                    decrement={this.decrement.bind(this)}
+                    functions={functions}
                 />
             </div>
         );
