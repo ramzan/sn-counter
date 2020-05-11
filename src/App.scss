@@ -1,4 +1,9 @@
-$themes: ("red":red, "blue":#3c8aea, "green":green, "black":#2a2a2a);
+$themes: ("red":#FD151B,
+        "dark-blue":#01295F,
+        "light-blue":#437f97,
+        "green":#849324,
+        "yellow":#ffb30f,
+        "purple":#693668);
 
 #counter-table, th, td {
   border-collapse: separate;
@@ -25,13 +30,13 @@ $themes: ("red":red, "blue":#3c8aea, "green":green, "black":#2a2a2a);
 }
 
 td:first-child, button{
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 td:last-child, button {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 #counter-editor {

@@ -5,10 +5,12 @@ import CounterTable from "./CounterTable";
 import {DragDropContext} from "react-beautiful-dnd";
 
 let COUNTERS = [
+    {title: "Twos", value: 2, step: 2, color: "dark-blue"},
+    {title: "Threes", value: 3, step: 3, color: "light-blue"},
+    {title: "Fours", value: 4, step: 4, color: "green"},
+    {title: "Fives", value: 5, step: 5, color: "yellow"},
     {title: "Ones", value: 1, step: 1, color: "red"},
-    {title: "Twos", value: 2, step: 2, color: "green"},
-    {title: "Threes", value: 3, step: 3, color: "blue"},
-    {title: "Fours", value: 4, step: 4, color: "black"},
+    {title: "Sixes", value: 6, step: 1000, color: "purple"},
 ];
 
 export default class CounterEditor extends React.Component {
