@@ -14,7 +14,7 @@ export default class CounterCreator extends React.Component {
     }
 
     createCounter() {
-        let counter = {title: this.state.inputTitle, value: 0, step: 1};
+        let counter = {title: this.state.inputTitle, value: 0, step: 1, color:"blue"};
         this.props.addCounter(counter);
         this.setState({
             inputTitle: ""
@@ -25,7 +25,7 @@ export default class CounterCreator extends React.Component {
     render() {
         return (
             <table id="counter-creator">
-                <tr>
+                <tbody>
                     <tr>
                         <td>
                             <input
@@ -35,13 +35,13 @@ export default class CounterCreator extends React.Component {
                                 placeholder="title"
                                 value={this.state.inputTitle}/>
                         </td>
+                        <td>
+                            <button onClick={this.createCounter.bind(this)}>
+                                Submit
+                            </button>
+                        </td>
                     </tr>
-                    <td>
-                        <button onClick={this.createCounter.bind(this)}>
-                            Submit
-                        </button>
-                    </td>
-                </tr>
+                </tbody>
             </table>
         )
     }
