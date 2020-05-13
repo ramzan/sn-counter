@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
-import CounterEditor from "./Components/CounterEditor";
+import CounterManager from './Components/CounterManager'
 
 function App() {
   return (
     <div className="App">
-      <CounterEditor/>
+      <CounterManager/>
     </div>
   );
 }

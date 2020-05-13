@@ -5,10 +5,17 @@ $themes: ("red":#FD151B,
         "yellow":#ffb30f,
         "purple":#693668);
 
+body {
+  width: available;
+  background-color: black;
+}
+
+
 #counter-table, th, td {
   border-collapse: separate;
   padding: 5px;
   border-spacing: 0px 5px;
+  table-layout: fixed;
 }
 
 @each $theme, $color in $themes {
@@ -16,8 +23,8 @@ $themes: ("red":#FD151B,
     background-color: $color;
     color: white;
     text-align: center;
-    //border-bottom: 3px solid white;
     font-size: 25px;
+    transition: 0.2s;
   }
   .#{$theme}-button {
     background-color: darken($color, 10%);
@@ -27,9 +34,16 @@ $themes: ("red":#FD151B,
     border: none;
     font-size: 25px;
   }
+  .#{$theme}-choose-button {
+    background-color: $color;
+    width: 30px;
+    height: 30px;
+    border: none;
+    margin: 10px;
+  }
 }
 
-td:first-child, button{
+td:first-child, button {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
@@ -46,5 +60,18 @@ td:last-child, button {
 img {
   width: 20px;
   height: 20px;
+}
+
+#counter-creator {
+  border-radius: 50px;
+}
+
+input {
+  border-radius: 10px;
+  border: none;
+}
+
+.focus-color:focus {
+  outline: white;
 }
 

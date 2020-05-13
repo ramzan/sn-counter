@@ -13,7 +13,7 @@ export default class CounterRow extends React.Component {
     }
 
     edit() {
-        this.props.functions.edit(this.props.counter);
+        this.props.functions.toggleEditable(this.props.counter);
     }
 
    render() {
@@ -25,13 +25,12 @@ export default class CounterRow extends React.Component {
                    <tr       ref={provided.innerRef}
                              {...provided.draggableProps}
                              {...provided.dragHandleProps}>
-                   <td className={counter.color}> {counter.title}</td>
-                   <td className={counter.color}><button className={buttonClass} onClick={this.dec.bind(this)}> - </button> </td>
-                   <td className={counter.color}> {counter.value} </td>
-                   <td className={counter.color}> <button className={buttonClass} onClick={this.inc.bind(this)}> + </button> </td>
-                   <td className={counter.color}> <button className={`${buttonClass} editButton`} onClick={this.edit.bind(this)}> <img src={kebab} alt=""/> </button> </td>
-                   {console.log(counter)}
-               </tr>
+                       <td className={counter.color}> {counter.title}</td>
+                       <td className={counter.color}><button className={buttonClass} onClick={this.dec.bind(this)}> - </button> </td>
+                       <td className={counter.color} id="value-display"> {counter.value} </td>
+                       <td className={counter.color}> <button className={buttonClass} onClick={this.inc.bind(this)}> + </button> </td>
+                       <td className={counter.color}> <button className={`${buttonClass} editButton`} onClick={this.edit.bind(this)}> <img src={kebab} alt=""/> </button> </td>
+                   </tr>
                )}
            </Draggable>
        )

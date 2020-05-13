@@ -13,13 +13,15 @@ let COUNTERS = [
     {title: "Sixes", value: 6, step: 1000, color: "purple"},
 ];
 
-export default class CounterEditor extends React.Component {
+export default class CounterManager extends React.Component {
     constructor(props) {
         super(props);
         let idCount = 0;
-        for(let counter of COUNTERS) {
+        for (let counter of COUNTERS) {
             counter.id = `${counter.title}-${idCount++}`;
-        };
+            counter.editable = false;
+        }
+        ;
         this.state = {
             counters: COUNTERS,
             idCount,
@@ -41,6 +43,22 @@ export default class CounterEditor extends React.Component {
         return this.state.counters.indexOf(counter);
     }
 
+    toggleEditable(counter) {
+        const index = this.state.counters.indexOf(counter);
+        this.setState({
+            counters: update(this.state.counters, {[index]: {editable: {$set: !counter.editable}}})
+        })
+    }
+
+    deleteCounter(counter) {
+        const counters = this.state.counters;
+        const index = counters.indexOf(counter);
+        this.setState({
+            counters: counters.slice(0 ,index).concat(counters.slice(index + 1))
+        })
+
+    }
+
     //Counter Actions
 
     increment(counter) {
@@ -57,16 +75,19 @@ export default class CounterEditor extends React.Component {
         })
     }
 
-    editCounter(counter) {
-       console.log("Editing", counter);
+    editCounter(counter, newState) {
+        const index = this.state.counters.indexOf(counter);
+        this.setState({
+            counters: update(this.state.counters, {[index]: {$set: {...counter, ...newState}}})
+        })
     }
 
     //Dragging Methods
 
     onDragEnd(result) {
-        const { destination, source, reason } = result;
+        const {destination, source, reason} = result;
 
-        // Not a thing to do...
+        // Nothing to do
         if (!destination || reason === 'CANCEL') {
             this.setState({
                 draggingRowId: null,
@@ -90,14 +111,16 @@ export default class CounterEditor extends React.Component {
         });
     }
 
-   render() {
+    render() {
         const functions = {
             increment: this.increment.bind(this),
             decrement: this.decrement.bind(this),
             edit: this.editCounter.bind(this),
             onDragEnd: this.onDragEnd.bind(this),
-            getIndex: this.getIndex.bind(this)
-       };
+            getIndex: this.getIndex.bind(this),
+            toggleEditable: this.toggleEditable.bind(this),
+            deleteCounter: this.deleteCounter.bind(this)
+        };
         return (
             <div id="counter-editor">
                 <CounterCreator addCounter={this.addCounter.bind(this)}/>
@@ -109,5 +132,5 @@ export default class CounterEditor extends React.Component {
                 </DragDropContext>
             </div>
         );
-   }
+    }
 }
