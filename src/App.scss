@@ -5,7 +5,6 @@
   align-items: center;
 }
 
-
 table {
   width: 100vw;
 }
@@ -14,7 +13,6 @@ img {
   width: 20px;
   height: 20px;
 }
-
 
 input {
   width: 100%;
@@ -100,6 +98,7 @@ td {
 
 .title-td {
     max-width: 40vw;
+    min-width: 40vw;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -128,7 +127,7 @@ td:last-child, button {
 .dropdown-colors-content {
   display: none;
   position: absolute;
-  right: 29.5vw;
+  right: 20vw;
   background-color: lightgrey;
   border-radius: 20px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -153,10 +152,14 @@ td:last-child, button {
 #edit-button {
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
   font-size: 20px;
 }
 
 #delete-button {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   border-bottom-right-radius: 7px;
   border-bottom-left-radius: 7px;
   font-size: 20px;

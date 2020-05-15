@@ -38,8 +38,8 @@ export default class CounterRow extends React.Component {
                        <td className={`dropdown ${counter.color}`}> 
                          <img src={kebab} alt=""/>
                             <div className="dropdown-options-content">
-                            <a id="edit-button" className={`${buttonClass} editButton`} onClick={this.edit.bind(this)}>Edit</a>
-                            <a id="delete-button" className={buttonClass} onClick={this.deleteCounter.bind(this)}>Delete</a>
+                            <button id="edit-button" className={buttonClass} onClick={this.edit.bind(this)}>Edit</button>
+                            <button id="delete-button" className={buttonClass} onClick={this.deleteCounter.bind(this)}>Delete</button>
                             </div>
                         </td>
 
