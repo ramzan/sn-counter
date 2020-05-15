@@ -46,8 +46,11 @@ export default class EditorRow extends React.Component {
                 {(provided, snapshot) => (
                     <tr ref={provided.innerRef}
                         {...provided.draggableProps}
-                        {...provided.dragHandleProps}>
+                        {...provided.dragHandleProps}
+                        className="edit-row">
+
                         <td className={this.state.color}>
+                            <label>Title</label>
                             <input
                                 type="text"
                                 onChange={this.handleTitleChange.bind(this)}
@@ -55,14 +58,17 @@ export default class EditorRow extends React.Component {
                                 value={this.state.title}/>
                         </td>
 
-                        <td className={this.state.color}> Value
+                        <td className={this.state.color}>
+                            <label>Value</label>
                             <input
                                 type="number"
                                 onKeyDown={checkInput}
                                 onChange={this.handleValueChange.bind(this)}
                                 value={this.state.value}/>
                         </td>
-                        <td className={this.state.color}> Step
+
+                        <td className={this.state.color}>
+                            <label>Step</label>
                             <input
                                 type="number"
                                 min={1}
@@ -70,22 +76,27 @@ export default class EditorRow extends React.Component {
                                 onChange={this.handleStepChange.bind(this)}
                                 value={this.state.step}/>
                         </td>
-                        <td className={this.state.color}> Color
+
+                        <td className={`dropdown ${this.state.color}`}>
+                            <button className={`dropbtn ${this.state.color}-color-selector-button`}/>
+                            <div className="dropdown-colors-content">
                             {COLORS.map(color => (
-                                <button className={`${color}-choose-button focus-color`}
+                                <button className={`${color}-color-selector-button focus-color`}
                                         value={color}
                                         onClick={this.handleColorChange.bind(this)}
                                         key={color}
                                 />
                             ))}
+                            </div>
                         </td>
+
                         <td className={this.state.color}>
-                            <button className={buttonClass} onClick={this.save.bind(this)}> Save</button>
+                            <button className={buttonClass} onClick={this.save.bind(this)}>Save</button>
+                            <button className={buttonClass} onClick={this.cancel.bind(this)}>Cancel</button>
                         </td>
-                        <td className={this.state.color}>
-                            <button className={buttonClass} onClick={this.cancel.bind(this)}> Cancel</button>
-                        </td>
+
                     </tr>
+
                 )}
             </Draggable>
         )

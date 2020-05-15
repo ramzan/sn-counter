@@ -53,23 +53,27 @@ export default class CounterCreator extends React.Component {
         return (
             <table id="counter-creator" className={this.state.color}>
                 <tbody>
-                <tr>
-                    <td> Title
+                <tr id="tvs">
+                    <td> 
+                        <label>Title</label>
                         <input
                             type="text"
+                            placeholder="Title"
                             onChange={this.handleTitleChange.bind(this)}
-                            placeholder="title"
                             value={this.state.title}/>
                     </td>
 
-                    <td> Value
+                    <td className="input-num-td">
+                        <label>Value</label>
                         <input
                             type="number"
                             onKeyDown={checkInput}
                             onChange={this.handleValueChange.bind(this)}
                             value={this.state.value}/>
                     </td>
-                    <td> Step
+
+                    <td className="input-num-td">
+                        <label>Step</label>
                         <input
                             type="number"
                             min={1}
@@ -78,21 +82,24 @@ export default class CounterCreator extends React.Component {
                             value={this.state.step}/>
                     </td>
 
-                    <td>
-                        <button onClick={this.createCounter.bind(this)} className={`${this.state.color}-button`}>
-                            Submit
-                        </button>
-                    </td>
                 </tr>
                 <tr>
-                    <td colSpan="3"> Color
+                    <td colSpan="3">
                         {COLORS.map(color => (
-                            <button className={`${color}-choose-button focus-color`}
+                            <button className={`${color}-color-selector-button focus-color`}
                                     value={color}
                                     onClick={this.handleColorChange.bind(this)}
                                     key={color}
                             />
                         ))}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colSpan="3">
+                        <button onClick={this.createCounter.bind(this)} className={`${this.state.color}-button create-button`}>
+                            Create
+                        </button>
                     </td>
                 </tr>
                 </tbody>

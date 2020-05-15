@@ -122,7 +122,7 @@ export default class CounterManager extends React.Component {
             deleteCounter: this.deleteCounter.bind(this)
         };
         return (
-            <div id="counter-editor">
+            <div id="counter-manager">
                 <CounterCreator addCounter={this.addCounter.bind(this)}/>
                 <DragDropContext onDragEnd={this.onDragEnd.bind(this)}>
                     <CounterTable

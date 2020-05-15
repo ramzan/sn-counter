@@ -1,3 +1,33 @@
+// top level
+#counter-manager {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+table {
+  width: 100vw;
+}
+
+img {
+  width: 20px;
+  height: 20px;
+}
+
+
+input {
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+}
+
+label {
+    display: block;
+}
+
+// theme setup
 $themes: ("red":#FD151B,
         "dark-blue":#01295F,
         "light-blue":#437f97,
@@ -5,18 +35,6 @@ $themes: ("red":#FD151B,
         "yellow":#ffb30f,
         "purple":#693668);
 
-body {
-  width: available;
-  background-color: black;
-}
-
-
-#counter-table, th, td {
-  border-collapse: separate;
-  padding: 5px;
-  border-spacing: 0px 5px;
-  table-layout: fixed;
-}
 
 @each $theme, $color in $themes {
   .#{$theme} {
@@ -32,9 +50,9 @@ body {
     width: 100%;
     height: 100%;
     border: none;
-    font-size: 25px;
+    font-size: 22px;
   }
-  .#{$theme}-choose-button {
+  .#{$theme}-color-selector-button {
     background-color: $color;
     width: 30px;
     height: 30px;
@@ -42,6 +60,52 @@ body {
     margin: 10px;
   }
 }
+
+// Counter Creator
+
+#counter-creator {
+  border-radius: 50px;
+  align-items: center;
+}
+
+.create-button {
+  width: 67.66%;
+}
+
+@media (max-width: 375px){
+    #tvs{
+        display: flex;
+        flex-direction: column;
+    }
+    #tvs td input{
+        width: 90%;
+    }
+    .edit-row td > * {
+        font-size: 15px;
+    }
+}
+
+
+// Counter Table
+
+td {
+    width: 100vw;
+}
+
+
+#counter-table, td {
+  padding: 5px;
+  border-spacing: 0px 5px;
+}
+
+.title-td {
+    max-width: 40vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Round corners of buttons and counters
 
 td:first-child, button {
   border-top-left-radius: 15px;
@@ -53,25 +117,47 @@ td:last-child, button {
   border-bottom-right-radius: 15px;
 }
 
-#counter-editor {
-  display: grid;
+// Dropdown menus
+
+
+.dropbtn {
+  border: 2px solid white;
 }
 
-img {
-  width: 20px;
-  height: 20px;
+
+.dropdown-colors-content {
+  display: none;
+  position: absolute;
+  right: 29.5vw;
+  background-color: lightgrey;
+  border-radius: 20px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  flex-direction: column;
 }
 
-#counter-creator {
-  border-radius: 50px;
+.dropdown-options-content {
+  display: none;
+  position: absolute;
+  width: 14vw;
+  border-radius: 20px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  flex-direction: column;
 }
 
-input {
+.dropdown:hover .dropdown-colors-content, .dropdown:hover .dropdown-options-content {
+  display: flex;
   border-radius: 10px;
-  border: none;
 }
 
-.focus-color:focus {
-  outline: white;
+
+#edit-button {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  font-size: 20px;
 }
 
+#delete-button {
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  font-size: 20px;
+}
