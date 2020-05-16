@@ -10,7 +10,7 @@ let COUNTERS = [
     {title: "Fours", value: 4, step: 4, color: "green"},
     {title: "Fives", value: 5, step: 5, color: "yellow"},
     {title: "Ones", value: 1, step: 1, color: "red"},
-    {title: "Sixes", value: 6, step: 1000, color: "purple"},
+    {title: "Thousands", value: 6, step: 1000, color: "purple"},
 ];
 
 export default class CounterManager extends React.Component {
