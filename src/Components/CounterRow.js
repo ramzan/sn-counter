@@ -32,14 +32,14 @@ export default class CounterRow extends React.Component {
                              {...provided.dragHandleProps}>
                        <td className={`${counter.color} title-td`}> {counter.title}</td>
                        <td className={counter.color}><button className={buttonClass} onClick={this.dec.bind(this)}> - </button> </td>
-                       <td className={counter.color} id="value-display"> {counter.value} </td>
+                       <td className={`${counter.color} value-td`}> {counter.value} </td>
                        <td className={counter.color}> <button className={buttonClass} onClick={this.inc.bind(this)}> + </button> </td>
 
                        <td className={`dropdown ${counter.color}`}> 
                          <img src={kebab} alt=""/>
                             <div className="dropdown-options-content">
-                            <button id="edit-button" className={buttonClass} onClick={this.edit.bind(this)}>Edit</button>
-                            <button id="delete-button" className={buttonClass} onClick={this.deleteCounter.bind(this)}>Delete</button>
+                            <button className={`${buttonClass} edit-button`} onClick={this.edit.bind(this)}>Edit</button>
+                            <button className={`${buttonClass} delete-button`} onClick={this.deleteCounter.bind(this)}>Delete</button>
                             </div>
                         </td>
 

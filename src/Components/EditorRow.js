@@ -49,25 +49,21 @@ export default class EditorRow extends React.Component {
                         {...provided.dragHandleProps}
                         className="edit-row">
 
-                        <td className={this.state.color}>
+                        <td className={this.state.color} colSpan="3">
                             <label>Title</label>
                             <input
                                 type="text"
                                 onChange={this.handleTitleChange.bind(this)}
                                 placeholder="title"
                                 value={this.state.title}/>
-                        </td>
 
-                        <td className={this.state.color}>
                             <label>Value</label>
                             <input
                                 type="number"
                                 onKeyDown={checkInput}
                                 onChange={this.handleValueChange.bind(this)}
                                 value={this.state.value}/>
-                        </td>
 
-                        <td className={this.state.color}>
                             <label>Step</label>
                             <input
                                 type="number"
