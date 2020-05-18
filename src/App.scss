@@ -86,8 +86,6 @@ $themes: ("red":#FD151B,
 
 // Counter Table
 
-
-
 #counter-table, td {
   padding: 5px;
   border-spacing: 0px 5px;
@@ -97,14 +95,21 @@ $themes: ("red":#FD151B,
   width: 100vw;
 }
 
+.title-td, .value-td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .title-td {
     max-width: 40vw;
     min-width: 40vw;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
+
+.value-td {
+    max-width: 22vw;
+}
+
 
 // Round corners of buttons and counters
 
@@ -118,22 +123,26 @@ td:last-child, button {
   border-bottom-right-radius: 15px;
 }
 
-// Dropdown menus
+// Editor Row
 
+.color-editor {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+}
+
+@media (max-width: 480px){
+    .color-editor {
+        transform: scale(0.9);
+        grid-template-columns: auto auto;
+    }
+}
+
+// Dropdown menus
 
 .dropbtn {
   border: 2px solid white;
-}
-
-
-.dropdown-colors-content {
-  display: none;
-  position: absolute;
-  right: 20vw;
-  background-color: lightgrey;
-  border-radius: 20px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  flex-direction: column;
 }
 
 .dropdown-options-content {
@@ -148,7 +157,7 @@ td:last-child, button {
   text-align: center;
 }
 
-.dropdown:hover .dropdown-colors-content, .dropdown:hover .dropdown-options-content {
+.dropdown:hover .dropdown-options-content {
   display: flex;
   border-radius: 10px;
 }
@@ -176,5 +185,8 @@ td:last-child, button {
 @media (max-width: 575px){
     .dropdown-options-content {
         right: 20px;
+    }
+    #counter-table td {
+        font-size: 20px;
     }
 }

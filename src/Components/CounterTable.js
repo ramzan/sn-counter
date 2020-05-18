@@ -13,7 +13,7 @@ export default class CounterTable extends React.Component {
        return (
            <Droppable droppableId="table">
                {(provided, snapshot) => (
-                   <table id="counter-table" ref={provided.innerRef} {...provided.droppableProps}>
+                   <table style={{width: "100%"}} id="counter-table" ref={provided.innerRef} {...provided.droppableProps}>
                        <tbody>
                            {counters.map(counter => (counter.editable ? <EditorRow counter={counter} functions={functions} key={counter.id}/> : <CounterRow counter={counter} functions={functions} key={counter.id}/>))}
                            {provided.placeholder}

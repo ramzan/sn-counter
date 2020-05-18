@@ -72,21 +72,17 @@ export default class EditorRow extends React.Component {
                                 onChange={this.handleStepChange.bind(this)}
                                 value={this.state.step}/>
                         </td>
+                   <td className={`${this.state.color} color-editor-td`} colSpan="2">
+                    <div className="color-editor">
+                        {COLORS.map(color => (
+                            <button className={`${color}-color-selector-button focus-color`}
+                                    value={color}
+                                    onClick={this.handleColorChange.bind(this)}
+                                    key={color}
+                            />
+                        ))}
+                    </div>
 
-                        <td className={`dropdown ${this.state.color}`}>
-                            <button className={`dropbtn ${this.state.color}-color-selector-button`}/>
-                            <div className="dropdown-colors-content">
-                            {COLORS.map(color => (
-                                <button className={`${color}-color-selector-button focus-color`}
-                                        value={color}
-                                        onClick={this.handleColorChange.bind(this)}
-                                        key={color}
-                                />
-                            ))}
-                            </div>
-                        </td>
-
-                        <td className={this.state.color}>
                             <button className={buttonClass} onClick={this.save.bind(this)}>Save</button>
                             <button className={buttonClass} onClick={this.cancel.bind(this)}>Cancel</button>
                         </td>
