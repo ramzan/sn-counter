@@ -1,6 +1,6 @@
 import React from "react";
 import {Draggable} from 'react-beautiful-dnd';
-import {checkInput, COLORS} from "./helpers";
+import {COLORS} from "./helpers";
 
 export default class EditorRow extends React.Component {
     constructor(props) {
@@ -8,7 +8,9 @@ export default class EditorRow extends React.Component {
         this.state = {
             title: props.counter.title,
             value: props.counter.value,
+            valueValid: true,
             step: props.counter.step,
+            stepValid: true,
             color: props.counter.color,
             editable: false
         };
@@ -18,12 +20,12 @@ export default class EditorRow extends React.Component {
         this.setState({title: e.target.value});
     }
 
-    handleValueChange(e) {
-        this.setState({value: parseInt(e.target.value)});
+    handleValueChange(e) { 
+        this.setState({value: e.target.value, valueValid: e.target.validity.valid});
     }
 
     handleStepChange(e) {
-        this.setState({step: parseInt(e.target.value)});
+        this.setState({step: e.target.value, stepValid: e.target.validity.valid});
     }
 
     handleColorChange(e) {
@@ -31,7 +33,15 @@ export default class EditorRow extends React.Component {
     }
 
     save() {
-        this.props.functions.edit(this.props.counter, this.state);
+        if (!(this.state.valueValid && this.state.stepValid)) return;
+        let counter = {
+             title: this.state.title,
+             value: parseInt(this.state.value),
+             step: parseInt(this.state.step),
+             color: this.state.color,
+             editable: false
+         };
+        this.props.functions.edit(this.props.counter, counter);
     }
 
     cancel() {
@@ -60,15 +70,15 @@ export default class EditorRow extends React.Component {
                             <label>Value</label>
                             <input
                                 type="number"
-                                onKeyDown={checkInput}
+                                required={true}
                                 onChange={this.handleValueChange.bind(this)}
                                 value={this.state.value}/>
 
                             <label>Step</label>
                             <input
                                 type="number"
+                                required={true}
                                 min={1}
-                                onKeyDown={checkInput}
                                 onChange={this.handleStepChange.bind(this)}
                                 value={this.state.step}/>
                         </td>

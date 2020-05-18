@@ -1,5 +1,5 @@
 import React from "react";
-import {checkInput, COLORS} from "./helpers";
+import {COLORS} from "./helpers";
 
 
 export default class CounterCreator extends React.Component {
@@ -9,7 +9,9 @@ export default class CounterCreator extends React.Component {
         this.state = {
             title: "",
             value: 0,
+            valueValid: true,
             step: 1,
+            stepValid: true,
             color: "light-blue",
             editable: false
         };
@@ -20,15 +22,11 @@ export default class CounterCreator extends React.Component {
     }
 
     handleValueChange(e) {
-        this.setState({value: e.target.value});
+        this.setState({value: e.target.value, valueValid: e.target.validity.valid});
     }
 
     handleStepChange(e) {
-        if (e.which < 48 || e.which > 57)
-        {
-            console.log("oi");
-        }
-        this.setState({step: e.target.value});
+        this.setState({step: e.target.value, stepValid: e.target.validity.valid});
     }
 
     handleColorChange(e) {
@@ -37,6 +35,7 @@ export default class CounterCreator extends React.Component {
 
 
     createCounter(e) {
+        if (!(this.state.valueValid && this.state.stepValid)) return;
         let counter = {
             title: this.state.title,
             value: parseInt(this.state.value),
@@ -67,7 +66,7 @@ export default class CounterCreator extends React.Component {
                         <label>Value</label>
                         <input
                             type="number"
-                            onKeyDown={checkInput}
+                            required={true}
                             onChange={this.handleValueChange.bind(this)}
                             value={this.state.value}/>
                     </td>
@@ -76,8 +75,8 @@ export default class CounterCreator extends React.Component {
                         <label>Step</label>
                         <input
                             type="number"
+                            required={true}
                             min={1}
-                            onKeyDown={checkInput}
                             onChange={this.handleStepChange.bind(this)}
                             value={this.state.step}/>
                     </td>
