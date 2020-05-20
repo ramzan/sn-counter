@@ -9733,6 +9733,11 @@ slice-ansi@^2.1.0:
     astral-regex "^1.0.0"
     is-fullwidth-code-point "^2.0.0"
 
+sn-components-api@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/sn-components-api/-/sn-components-api-1.2.8.tgz#5fbba6652c08d5b3e92502d782453c1520165721"
+  integrity sha512-epBFsQIKLK78SnJ6e5JNjYbdOAYbKzRyydjpAqji0WdX3S/tOD5Z3UVdLVyi4orKaM4322dk6nRJiTHMI1VyIw==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
