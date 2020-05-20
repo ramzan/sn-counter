@@ -59,7 +59,7 @@ export default class EditorRow extends React.Component {
                         {...provided.dragHandleProps}
                         className="edit-row">
 
-                        <td className={this.state.color} colSpan="3">
+                        <td className={`${this.state.color} editor-inputs`} colSpan="3">
                             <label>Title</label>
                             <input
                                 type="text"
@@ -71,6 +71,8 @@ export default class EditorRow extends React.Component {
                             <input
                                 type="number"
                                 required={true}
+                                min={Number.MIN_SAFE_INTEGER}
+                                max={Number.MAX_SAFE_INTEGER}
                                 onChange={this.handleValueChange.bind(this)}
                                 value={this.state.value}/>
 
@@ -79,6 +81,7 @@ export default class EditorRow extends React.Component {
                                 type="number"
                                 required={true}
                                 min={1}
+                                max={Number.MAX_SAFE_INTEGER}
                                 onChange={this.handleStepChange.bind(this)}
                                 value={this.state.step}/>
                         </td>

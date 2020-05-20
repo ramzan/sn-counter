@@ -62,16 +62,22 @@ export default class CounterManager extends React.Component {
     //Counter Actions
 
     increment(counter) {
+        const newValue = counter.value + counter.step;
+        if(newValue > Number.MAX_SAFE_INTEGER) return;
+
         const index = this.state.counters.indexOf(counter);
         this.setState({
-            counters: update(this.state.counters, {[index]: {value: {$set: counter.value + counter.step}}})
+            counters: update(this.state.counters, {[index]: {value: {$set: newValue}}})
         })
     }
 
     decrement(counter) {
+        const newValue = counter.value - counter.step;
+        if(newValue < Number.MIN_SAFE_INTEGER) return;
+
         const index = this.state.counters.indexOf(counter);
         this.setState({
-            counters: update(this.state.counters, {[index]: {value: {$set: counter.value - counter.step}}})
+            counters: update(this.state.counters, {[index]: {value: {$set: newValue}}})
         })
     }
 

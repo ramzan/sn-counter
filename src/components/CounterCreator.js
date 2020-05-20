@@ -35,6 +35,7 @@ export default class CounterCreator extends React.Component {
 
 
     createCounter(e) {
+        e.preventDefault();
         if (!(this.state.valueValid && this.state.stepValid)) return;
         let counter = {
             title: this.state.title,
@@ -66,17 +67,20 @@ export default class CounterCreator extends React.Component {
                         <label>Value</label>
                         <input
                             type="number"
+                            min={Number.MIN_SAFE_INTEGER}
+                            max={Number.MAX_SAFE_INTEGER}
                             required={true}
                             onChange={this.handleValueChange.bind(this)}
                             value={this.state.value}/>
                     </td>
 
-                    <td className="input-num-td">
+                    <td id="cc-step-input" className="input-num-td">
                         <label>Step</label>
                         <input
                             type="number"
                             required={true}
                             min={1}
+                            max={Number.MAX_SAFE_INTEGER}
                             onChange={this.handleStepChange.bind(this)}
                             value={this.state.step}/>
                     </td>
