@@ -1,6 +1,6 @@
 import React from "react";
 import {Draggable} from 'react-beautiful-dnd';
-import {COLORS} from "./helpers";
+import {COLORS} from "../lib/helpers";
 
 export default class EditorRow extends React.Component {
     constructor(props) {

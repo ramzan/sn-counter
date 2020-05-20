@@ -1,5 +1,5 @@
 import React from "react";
-import kebab from '../kebab.svg';
+import kebab from '../lib/kebab.svg';
 import {Draggable} from 'react-beautiful-dnd';
 
 export default class CounterRow extends React.Component {

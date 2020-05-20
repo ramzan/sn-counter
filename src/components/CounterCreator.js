@@ -1,5 +1,5 @@
 import React from "react";
-import {COLORS} from "./helpers";
+import {COLORS} from "../lib/helpers";
 
 
 export default class CounterCreator extends React.Component {

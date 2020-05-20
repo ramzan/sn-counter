@@ -1,6 +1,6 @@
 import React from 'react';
 import './stylesheets/App.scss';
-import CounterManager from './Components/CounterManager'
+import CounterManager from './components/CounterManager'
 
 function App() {
   return (
