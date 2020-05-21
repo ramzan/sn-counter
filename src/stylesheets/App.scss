@@ -39,12 +39,6 @@ input:invalid {
   background-color: lighten(red, 35%);
 }
 
-input:valid {
-  background: url("../lib/check.svg") no-repeat 3%;
-  background-size: 15px;
-  background-color: lighten(lightgreen, 5%);
-}
-
 label {
     display: block;
 }
