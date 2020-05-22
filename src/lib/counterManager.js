@@ -1,7 +1,8 @@
 import ComponentManager from 'sn-components-api';
+import {COLORS} from "./helpers";
 
 const CounterDelimiter = "\n";
-const defaultCounter = {title: "", value: 0, step: 0, color: "light-blue"}; 
+const defaultCounter = {title: "", value: 0, step: 0, color: COLORS[0]}; 
 
 export default class CounterManager {
 
@@ -64,6 +65,10 @@ export default class CounterManager {
       catch(err) {console.error(`Error parsing ${x}`)}
       return counter;
     }).filter(counter => counter !== "").map(counter => ({...defaultCounter, ...this.setInfo(counter)}));
+    counters = counters.map(counter => {
+      if(!COLORS.includes(counter.color)) counter.color = COLORS[0];
+      return counter;
+    })
     
     return counters;
   }
