@@ -20,7 +20,7 @@ export default class EditorRow extends React.Component {
         this.setState({title: e.target.value});
     }
 
-    handleValueChange(e) { 
+    handleValueChange(e) {
         this.setState({value: e.target.value, valueValid: e.target.validity.valid});
     }
 
@@ -35,12 +35,12 @@ export default class EditorRow extends React.Component {
     save() {
         if (!(this.state.valueValid && this.state.stepValid)) return;
         let counter = {
-             title: this.state.title,
-             value: parseInt(this.state.value),
-             step: parseInt(this.state.step),
-             color: this.state.color,
-             editable: false
-         };
+            title: this.state.title,
+            value: parseInt(this.state.value),
+            step: parseInt(this.state.step),
+            color: this.state.color,
+            editable: false
+        };
         this.props.functions.edit(this.props.counter, counter);
     }
 
@@ -85,16 +85,16 @@ export default class EditorRow extends React.Component {
                                 onChange={this.handleStepChange.bind(this)}
                                 value={this.state.step}/>
                         </td>
-                   <td className={`${this.state.color} color-editor-td`} colSpan="2">
-                    <div className="color-editor">
-                        {COLORS.map(color => (
-                            <button className={`${color}-color-selector-button focus-color`}
-                                    value={color}
-                                    onClick={this.handleColorChange.bind(this)}
-                                    key={color}
-                            />
-                        ))}
-                    </div>
+                        <td className={`${this.state.color} color-editor-td`} colSpan="2">
+                            <div className="color-editor">
+                                {COLORS.map(color => (
+                                    <button className={`${color}-color-selector-button focus-color`}
+                                            value={color}
+                                            onClick={this.handleColorChange.bind(this)}
+                                            key={color}
+                                    />
+                                ))}
+                            </div>
 
                             <button className={buttonClass} onClick={this.save.bind(this)}>Save</button>
                             <button className={buttonClass} onClick={this.cancel.bind(this)}>Cancel</button>

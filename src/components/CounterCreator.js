@@ -54,7 +54,7 @@ export default class CounterCreator extends React.Component {
             <table id="counter-creator" className={this.state.color}>
                 <tbody>
                 <tr id="tvs">
-                    <td> 
+                    <td>
                         <label>Title</label>
                         <input
                             type="text"
@@ -100,7 +100,8 @@ export default class CounterCreator extends React.Component {
 
                 <tr>
                     <td colSpan="3">
-                        <button onClick={this.createCounter.bind(this)} className={`${this.state.color}-button create-button`}>
+                        <button onClick={this.createCounter.bind(this)}
+                                className={`${this.state.color}-button create-button`}>
                             Create
                         </button>
                     </td>

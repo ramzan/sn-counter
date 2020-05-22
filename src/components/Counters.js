@@ -13,33 +13,33 @@ export default class Counters extends React.Component {
             draggingRowID: null
         };
         CounterManager.get().setDataChangeHandler((counters) => {
-      // We need CounterManager.get().isMobile() to be defined, and this handler is called once on bridge ready.
-         this.updateCounters();
-    })
+            // We need CounterManager.get().isMobile() to be defined, and this handler is called once on bridge ready.
+            this.updateCounters();
+        })
 
-    CounterManager.get().setOnReady(() => {
-      let platform = CounterManager.get().getPlatform();
-      // add platform class to main <html> element
-      var root = document.documentElement;
-      root.className += platform;
-      this.setState({ready: true})
-    })
+        CounterManager.get().setOnReady(() => {
+            let platform = CounterManager.get().getPlatform();
+            // add platform class to main <html> element
+            var root = document.documentElement;
+            root.className += platform;
+            this.setState({ready: true})
+        })
     }
 
-  componentDidMount() {
-    CounterManager.get().initiateBridge();
-    this.updateCounters();
-  }
+    componentDidMount() {
+        CounterManager.get().initiateBridge();
+        this.updateCounters();
+    }
 
-  updateCounters() {
-    this.setState({counters: CounterManager.get().getCounters()});
-  }
+    updateCounters() {
+        this.setState({counters: CounterManager.get().getCounters()});
+    }
 
     //Counter Management
 
     addCounter(counter) {
-      CounterManager.get().addCounter(counter);
-      this.updateCounters();
+        CounterManager.get().addCounter(counter);
+        this.updateCounters();
     }
 
     getIndex(counter) {
@@ -54,25 +54,25 @@ export default class Counters extends React.Component {
     }
 
     deleteCounter(counter) {
-      CounterManager.get().deleteCounter(counter);
-      this.updateCounters();
+        CounterManager.get().deleteCounter(counter);
+        this.updateCounters();
     }
 
     //Counter Actions
 
     increment(counter) {
-      CounterManager.get().increment(counter);
-      this.updateCounters();
+        CounterManager.get().increment(counter);
+        this.updateCounters();
     }
 
     decrement(counter) {
-      CounterManager.get().decrement(counter);
-      this.updateCounters();
+        CounterManager.get().decrement(counter);
+        this.updateCounters();
     }
 
     editCounter(counter, newState) {
-      CounterManager.get().editCounter(counter, newState);
-      this.updateCounters();
+        CounterManager.get().editCounter(counter, newState);
+        this.updateCounters();
     }
 
     //Dragging Methods
@@ -95,8 +95,8 @@ export default class Counters extends React.Component {
             return;
         }
 
-      CounterManager.get().rearrange(destination, source);
-      this.updateCounters();
+        CounterManager.get().rearrange(destination, source);
+        this.updateCounters();
     }
 
     render() {

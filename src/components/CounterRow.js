@@ -21,31 +21,38 @@ export default class CounterRow extends React.Component {
     }
 
 
-   render() {
-       const {counter} = this.props;
-       const buttonClass = `${counter.color}-button`;
-       return (
-           <Draggable draggableId={counter.id} index={this.props.functions.getIndex(counter)}>
-               {(provided, snapshot) => (
-                   <tr       ref={provided.innerRef}
-                             {...provided.draggableProps}
-                             {...provided.dragHandleProps}>
-                       <td className={`${counter.color} title-td`}> {counter.title}</td>
-                       <td className={counter.color}><button className={buttonClass} onClick={this.dec.bind(this)}> - </button> </td>
-                       <td className={`${counter.color} value-td`}> {counter.value} </td>
-                       <td className={counter.color}> <button className={buttonClass} onClick={this.inc.bind(this)}> + </button> </td>
+    render() {
+        const {counter} = this.props;
+        const buttonClass = `${counter.color}-button`;
+        return (
+            <Draggable draggableId={counter.id} index={this.props.functions.getIndex(counter)}>
+                {(provided, snapshot) => (
+                    <tr ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}>
+                        <td className={`${counter.color} title-td`}> {counter.title}</td>
+                        <td className={counter.color}>
+                            <button className={buttonClass} onClick={this.dec.bind(this)}> -</button>
+                        </td>
+                        <td className={`${counter.color} value-td`}> {counter.value} </td>
+                        <td className={counter.color}>
+                            <button className={buttonClass} onClick={this.inc.bind(this)}> +</button>
+                        </td>
 
-                       <td className={`dropdown ${counter.color}`}> 
-                         <img src={kebab} alt=""/>
+                        <td className={`dropdown ${counter.color}`}>
+                            <img src={kebab} alt=""/>
                             <div className="dropdown-options-content">
-                            <button className={`${buttonClass} edit-button`} onClick={this.edit.bind(this)}>Edit</button>
-                            <button className={`${buttonClass} delete-button`} onClick={this.deleteCounter.bind(this)}>Delete</button>
+                                <button className={`${buttonClass} edit-button`} onClick={this.edit.bind(this)}>Edit
+                                </button>
+                                <button className={`${buttonClass} delete-button`}
+                                        onClick={this.deleteCounter.bind(this)}>Delete
+                                </button>
                             </div>
                         </td>
 
-                   </tr>
-               )}
-           </Draggable>
-       )
-   }
+                    </tr>
+                )}
+            </Draggable>
+        )
+    }
 }
