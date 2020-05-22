@@ -2,41 +2,53 @@ import React from "react";
 import update from 'immutability-helper';
 import CounterCreator from "./CounterCreator";
 import CounterTable from "./CounterTable";
+import CounterManager from "../lib/counterManager";
 import {DragDropContext} from "react-beautiful-dnd";
 
-let COUNTERS = [
+/*let COUNTERS = [
     {title: "Twos", value: 2, step: 2, color: "dark-blue"},
     {title: "Threes", value: 3, step: 3, color: "light-blue"},
     {title: "Fours", value: 4, step: 4, color: "green"},
     {title: "Fives", value: 5, step: 5, color: "yellow"},
     {title: "Ones", value: 1, step: 1, color: "red"},
     {title: "Thousands", value: 6, step: 1000, color: "purple"},
-];
+];*/
 
-export default class CounterManager extends React.Component {
+export default class Counters extends React.Component {
     constructor(props) {
         super(props);
-        let idCount = 0;
-        for (let counter of COUNTERS) {
-            counter.id = `${counter.title}-${idCount++}`;
-            counter.editable = false;
-        }
-        ;
         this.state = {
-            counters: COUNTERS,
-            idCount,
+            counters: [],
             draggingRowID: null
         };
+        CounterManager.get().setDataChangeHandler((counters) => {
+      // We need CounterManager.get().isMobile() to be defined, and this handler is called once on bridge ready.
+         this.updateCounters();
+    })
+
+    CounterManager.get().setOnReady(() => {
+      let platform = CounterManager.get().getPlatform();
+      // add platform class to main <html> element
+      var root = document.documentElement;
+      root.className += platform;
+      this.setState({ready: true})
+    })
     }
+
+  componentDidMount() {
+    CounterManager.get().initiateBridge();
+    this.updateCounters();
+  }
+
+  updateCounters() {
+    this.setState({counters: CounterManager.get().getCounters()});
+  }
 
     //Counter Management
 
     addCounter(counter) {
-        counter.id = `${counter.title}-${this.state.idCount}`;
-        this.setState({
-            counters: [...this.state.counters, counter],
-            idCount: this.state.idCount + 1
-        });
+      CounterManager.get().addCounter(counter);
+      this.updateCounters();
     }
 
     getIndex(counter) {
@@ -51,41 +63,25 @@ export default class CounterManager extends React.Component {
     }
 
     deleteCounter(counter) {
-        const counters = this.state.counters;
-        const index = counters.indexOf(counter);
-        this.setState({
-            counters: counters.slice(0 ,index).concat(counters.slice(index + 1))
-        })
-
+      CounterManager.get().deleteCounter(counter);
+      this.updateCounters();
     }
 
     //Counter Actions
 
     increment(counter) {
-        const newValue = counter.value + counter.step;
-        if(newValue > Number.MAX_SAFE_INTEGER) return;
-
-        const index = this.state.counters.indexOf(counter);
-        this.setState({
-            counters: update(this.state.counters, {[index]: {value: {$set: newValue}}})
-        })
+      CounterManager.get().increment(counter);
+      this.updateCounters();
     }
 
     decrement(counter) {
-        const newValue = counter.value - counter.step;
-        if(newValue < Number.MIN_SAFE_INTEGER) return;
-
-        const index = this.state.counters.indexOf(counter);
-        this.setState({
-            counters: update(this.state.counters, {[index]: {value: {$set: newValue}}})
-        })
+      CounterManager.get().decrement(counter);
+      this.updateCounters();
     }
 
     editCounter(counter, newState) {
-        const index = this.state.counters.indexOf(counter);
-        this.setState({
-            counters: update(this.state.counters, {[index]: {$set: {...counter, ...newState}}})
-        })
+      CounterManager.get().editCounter(counter, newState);
+      this.updateCounters();
     }
 
     //Dragging Methods
@@ -108,13 +104,8 @@ export default class CounterManager extends React.Component {
             return;
         }
 
-        const counters = Object.assign([], this.state.counters);
-        const counter = this.state.counters[source.index];
-        counters.splice(source.index, 1);
-        counters.splice(destination.index, 0, counter);
-        this.setState({
-            counters
-        });
+      CounterManager.get().rearrange(destination, source);
+      this.updateCounters();
     }
 
     render() {
