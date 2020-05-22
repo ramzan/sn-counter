@@ -1,6 +1,7 @@
 import ComponentManager from 'sn-components-api';
 
-let CounterDelimiter = "\n";
+const CounterDelimiter = "\n";
+const defaultCounter = {title: "", value: 0, step: 0, color: "light-blue"}; 
 
 export default class CounterManager {
 
@@ -54,17 +55,23 @@ export default class CounterManager {
   }
 
   parseRawCountersString(string) {
-    if(!string) {return []}
-    let counters = string.split(CounterDelimiter).map(x => JSON.parse(x));
-    for(let counter of counters) {
-      this.setInfo(counter);
-    }
+    this.idCount = 0;
+    if(!string) {return []};
+    // Remove invalid entires then add default propertites if any are missing
+    let counters = string.split(CounterDelimiter).map(x => {
+      let counter = "";
+      try {counter = JSON.parse(x)}
+      catch(err) {console.error(`Error parsing ${x}`)}
+      return counter;
+    }).filter(counter => counter !== "").map(counter => ({...defaultCounter, ...this.setInfo(counter)}));
+    
     return counters;
   }
 
   setInfo(counter) {
-    counter.id = `${counter.title}-${this.idCount++}`;
+    counter.id = `${counter.title}${this.idCount++}`;
     counter.editable = false;
+    return counter;
   }
 
   reloadData() {
