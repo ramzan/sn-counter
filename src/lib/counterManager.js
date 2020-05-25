@@ -134,9 +134,7 @@ export default class CounterManager {
 
     editCounter(counter, newState) {
         const index = this.counters.findIndex(x => x.id === counter.id);
-        console.log(this.counters[index]);
         this.counters[index] = {...counter, ...newState};
-        console.log(this.counters[index]);
         this.save();
     }
 
