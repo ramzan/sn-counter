@@ -36,7 +36,6 @@ export default class CounterManager {
             }
 
             this.dataString = note.content.text;
-            this.idCount = 0;
             this.reloadData();
             this.dataChangeHandler && this.dataChangeHandler(this.counters);
         });
@@ -89,6 +88,7 @@ export default class CounterManager {
     }
 
     reloadData() {
+        this.idCount = 0;
         this.counters = this.parseRawCountersString(this.dataString);
     }
 
