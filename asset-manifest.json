@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/sn-counter/static/css/main.0dcb7fdb.chunk.css",
+    "main.js": "/sn-counter/static/js/main.90dfe230.chunk.js",
+    "main.js.map": "/sn-counter/static/js/main.90dfe230.chunk.js.map",
+    "runtime-main.js": "/sn-counter/static/js/runtime-main.0db8caea.js",
+    "runtime-main.js.map": "/sn-counter/static/js/runtime-main.0db8caea.js.map",
+    "static/js/2.9b52fe5f.chunk.js": "/sn-counter/static/js/2.9b52fe5f.chunk.js",
+    "static/js/2.9b52fe5f.chunk.js.map": "/sn-counter/static/js/2.9b52fe5f.chunk.js.map",
+    "index.html": "/sn-counter/index.html",
+    "precache-manifest.4f02ca1d055f05426b9c8bc1287a7f8d.js": "/sn-counter/precache-manifest.4f02ca1d055f05426b9c8bc1287a7f8d.js",
+    "service-worker.js": "/sn-counter/service-worker.js",
+    "static/css/main.0dcb7fdb.chunk.css.map": "/sn-counter/static/css/main.0dcb7fdb.chunk.css.map",
+    "static/js/2.9b52fe5f.chunk.js.LICENSE.txt": "/sn-counter/static/js/2.9b52fe5f.chunk.js.LICENSE.txt",
+    "static/media/kebab.svg": "/sn-counter/static/media/kebab.1533b4c2.svg",
+    "static/media/App.scss": "/sn-counter/static/media/x.f3735be9.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0db8caea.js",
+    "static/js/2.9b52fe5f.chunk.js",
+    "static/css/main.0dcb7fdb.chunk.css",
+    "static/js/main.90dfe230.chunk.js"
+  ]
+}
