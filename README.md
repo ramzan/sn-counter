@@ -1,9 +1,11 @@
 
-[Live Demo](https://ramzan.github.io/sn-counter)
+
 
 ## Description
 
 A simple counter application made for use in [Standard Notes](https://standardnotes.org/).
+
+[Live Demo](https://ramzan.github.io/sn-counter)
 
 ## Development
 
