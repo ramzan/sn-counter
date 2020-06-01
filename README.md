@@ -9,7 +9,11 @@ A simple counter application made for use in [Standard Notes](https://standardno
 
 ## Development
 
-In the project directory, you can run:
+In the project directory, you can run
+
+### `yarn install`
+
+which installs the dependencies. Then run 
 
 ### `yarn start`
 
